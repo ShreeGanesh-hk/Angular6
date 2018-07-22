@@ -1,0 +1,125 @@
+<div>
+    <h3> Asset details for Zone : A</h3>
+</div>
+<div>
+           <br>
+
+    <div class="row">
+     <!--   <div class="col-2 form-group"><select class="form-control" id="assembly">
+                <option>Assembly</option>
+                <option>ASL-1</option>
+                <option>ASL-2</option>
+                <option>ASL-3</option>
+
+              </select></div>
+        <div class="col-2 form-group"><select class="form-control" id="zone">
+                <option>Zone</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+              </select></div>
+-->
+        <div class="col-5">
+            <input type="text" name="search" placeholder="Search anything" class="form-control">
+        </div>
+        <div class="col-2">
+            <button id="search" name="search" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <br>
+
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource" matSort
+                   (matSortChange)="onSortChange($event)">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox color="primary"
+                            (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+
+
+            <mat-cell *matCellDef="let row"
+                      [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">
+              <mat-checkbox color="primary"
+                            (click)="$event.stopPropagation();"
+                            (change)="$event ? selection.toggle(row) : null; getSelected()"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+
+       <!--   <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+            <mat-cell *matCellDef="let row"><a [routerLink]="['../details',row.id]">{{row.id}}</a></mat-cell>
+          </ng-container>-->
+
+          <ng-container matColumnDef="assetId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset</mat-header-cell>
+            <mat-cell class="description-cell"
+                      *matCellDef="let row"
+                      [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.assetId}}
+            </mat-cell>
+          </ng-container>
+
+            <ng-container matColumnDef="assemblyStation">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Assembly</mat-header-cell>
+                <mat-cell class="description-cell"
+                          *matCellDef="let row"
+                          [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.assemblyStation}}
+                </mat-cell>
+              </ng-container>
+
+            <ng-container matColumnDef="zone">
+                   <mat-header-cell *matHeaderCellDef mat-sort-header>Zone</mat-header-cell>
+                   <mat-cell class="description-cell"
+                             *matCellDef="let row"
+                             [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.zone}}
+                   </mat-cell>
+                 </ng-container>
+
+            <ng-container matColumnDef="baseLoc">
+                   <mat-header-cell *matHeaderCellDef mat-sort-header>Base Loc</mat-header-cell>
+                   <mat-cell class="description-cell"
+                             *matCellDef="let row"
+                             [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.baseLoc}}
+                   </mat-cell>
+                 </ng-container>
+
+            <ng-container matColumnDef="currentLoc">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>Current
+                            Loc</mat-header-cell>
+                            <mat-cell class="description-cell"
+                                      [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}"
+                                      *matCellDef="let row"
+                                      [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.currentLoc}}
+                            </mat-cell>
+                          </ng-container>
+
+            <ng-container matColumnDef="type">
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Type
+                                  </mat-header-cell>
+                                  <mat-cell class="description-cell"
+                                            *matCellDef="let row"
+                                            [ngClass]="{ 'bkGround':row.currentLoc !== row.baseLoc}">{{row.type}}
+                                  </mat-cell>
+                                </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+          <mat-row *matRowDef="let row; columns: displayedColumns"
+                   (click)="onRowClicked(row)">
+          </mat-row>
+
+
+        </mat-table>
+
+
+
+</div>

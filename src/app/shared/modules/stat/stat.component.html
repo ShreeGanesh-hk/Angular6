@@ -1,0 +1,22 @@
+<div class="card text-white bg-{{bgClass}}">
+    <div class="card-header">
+        <div class="row">
+            <div class="col col-xs-2">
+                <i class="fa {{icon}}"></i> {{label}}
+<!--                <hr>
+                <div class="d-block">T-1: 10 T-2: 10</div>-->
+                <hr>
+                <div class="d-block">Total: {{total}} Missing: <b> {{missing}} </b></div>
+                <div class="d-block">Contact Person: {{contact}}</div>
+            </div>
+            <br>
+        </div>
+
+    </div>
+    <div class="card-footer">
+        <span class="float-left">Zone: {{data}}</span>
+        <a class="float-right" [routerLink]="['/charts/zonedetails']">
+            <span><i class="fa fa-arrow-circle-right" style="color: white">Details</i></span>
+        </a>
+    </div>
+</div>

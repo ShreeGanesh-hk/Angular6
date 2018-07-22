@@ -1,0 +1,152 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Asset Management'" [icon]="'fa fa-check-square-o'"></app-page-header>
+
+
+</div>
+
+<div>
+    <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Assembly Line
+      </mat-panel-title>
+      <mat-panel-description>
+        Give Details of Assembly Line
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Assembly Line" value="" #assembly >
+  </mat-form-field>
+   <button id="btnAddAssembly" style="margin-left : 30px" (click)="add(assembly.value); assembly.value=''" name="Save" class="btn btn-primary">Save</button>
+
+  </mat-expansion-panel>
+
+<br/>
+
+ <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Zone
+      </mat-panel-title>
+      <mat-panel-description>
+        Give Zone Details
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+<mat-form-field>
+<mat-select placeholder="Assembly Line" [(ngModel)]="selectedAssemblyValue" name="Assembly Line" id="ddlZoneAssemblyLine">
+<mat-option *ngFor="let assemblyline of assemblyLines" [value]="assemblyline.value">
+{{assemblyline.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+
+<mat-form-field class="example-full-width"  style="margin-left : 30px">
+
+    <input matInput placeholder="Zone" value="" id="txtZone">
+  </mat-form-field>
+  <button id="btnAddZone" style="margin-left : 30px" name="Save" class="btn btn-primary">Save</button>
+
+  </mat-expansion-panel>
+
+
+<br/>
+
+ <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Assets
+      </mat-panel-title>
+      <mat-panel-description>
+        Give Asset Details
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+<mat-form-field>
+<mat-select placeholder="Assembly Line" [(ngModel)]="selectedAssetAssemblyValue" name="Assembly Line" id="ddlAssetAssemblyLine">
+<mat-option *ngFor="let assemblyline of assemblyLines" [value]="assemblyline.value">
+{{assemblyline.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+<mat-form-field style="margin-left : 30px">
+<mat-select placeholder="Select Zone" [(ngModel)]="selectedAssetZoneValue" name="Zone" id="ddlAssetZoneId">
+<mat-option *ngFor="let zone of zones" [value]="zone.value">
+{{zone.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+<mat-form-field style="margin-left : 30px">
+<mat-select placeholder="Asset Type" [(ngModel)]="selectedAssetValue" name="AssetType" id="ddlAssetType">
+<mat-option *ngFor="let asset of assets" [value]="asset.value">
+{{asset.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width" style="margin-left : 30px">
+
+    <input matInput placeholder="Asset Id" value="" id="txtAssetId">
+  </mat-form-field>
+<br/>
+<label id="calibration" name="calibration" for="calibration" class="example-full-width" style="color:Gray">Calibrated</label>
+<mat-radio-group>
+<mat-radio-button value="1" checked style="margin-left:10px;">Yes</mat-radio-button>
+<mat-radio-button value="2" style="margin-left:10px;">No</mat-radio-button>
+</mat-radio-group><br/>
+
+<br/>
+<mat-form-field class="example-full-width">
+
+    <input matInput placeholder="QI Period" value="" id="txtQIPeriod">
+  </mat-form-field>
+
+<br/>
+
+  <button id="btnAddAsset" name="Save" class="btn btn-primary">Save</button>
+
+  </mat-expansion-panel>
+
+<br/>
+
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Print Barcode
+      </mat-panel-title>
+      <mat-panel-description>
+        Print Barcode
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+<mat-form-field>
+<mat-select placeholder="Print For" [(ngModel)]="selectedPrintChoiceValue" name="PrintChoice" id="ddlPrintForValue" >
+<mat-option *ngFor="let printchoice of printChoice" [value]="printchoice.value">
+{{printchoice.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+
+<!--<mat-form-field class="example-full-width" style="margin-left : 30px">
+    <input matInput placeholder="Give Id"  id="txtPrintChoiceId" name="txtPrintChoiceId" [(ngModel)] = "txtPrintChoiceId">
+  </mat-form-field>
+   <button id="btnPrint" (click)="btnPrintFunction($event)" style="margin-left : 30px" name="Save" class="btn btn-primary">Print</button>
+</mat-form-field>
+--> 
+<mat-form-field style="margin-left: 30px">
+<input matInput placeholder="Give Id" name="barcodeName" id="barcodeName" [(ngModel)]="barcodeName" (ngModelChange) = textChanged($event)>
+</mat-form-field>
+    <button id="print" style="margin-left : 30px" name="Print" class="btn btn-primary">Print`</button>
+<ngx-barcode [bc-value]="barcodeVal" [bc-display-value]="canShow"></ngx-barcode> 
+
+  </mat-expansion-panel>
+
+</mat-accordion>
+</div>

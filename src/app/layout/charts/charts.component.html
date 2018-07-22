@@ -1,0 +1,38 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Dashboard'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <div class="row">
+        <div class="col-2 form-group"><select class="form-control" id="assembly">
+            <option>Assembly</option>
+            <option>ASL-1</option>
+            <option>ASL-2</option>
+            <option>ASL-3</option>
+
+        </select></div>
+        <div class="col-2">
+            <input type="text" name="search" placeholder="Search anything" class="form-control">
+        </div>
+        <div class="col-2">
+            <button id="search" name="search" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-lg-3">
+            <app-stat [bgClass]="'success'" [icon]="'fa fa-check'"  [data] = "'A'"
+                      [label]="'RETURNED'" [missing]="0" [total]="20" [contact]="'Ravi'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-3">
+                  <app-stat [bgClass]="'success'" [icon]="'fa fa-check'" [count]="14" [data] = "'B'"
+                            [label]="'RETURNED'" [contact]="'Suresh'" [missing]="0"
+                            [total]="28"></app-stat>
+              </div>
+        <div class="col-xl-3 col-lg-3">
+                  <app-stat [bgClass]="'success'" [icon]="'fa fa-check'" [count]="42" [data] = "'C'"
+                            [label]="'RETURNED'" [contact]="'Mahesh'" [missing]="0"
+                            [total]="218"></app-stat>
+              </div>
+        <div class="col-xl-3 col-lg-3">
+            <app-stat [bgClass]="'danger'" [icon]="'fa-exclamation-circle'"  [label]="'NOT RETURNED'" [data] = "'D'" [contact]="'Bala'" [missing]="1" [total]="5"></app-stat>
+        </div>
+
+    </div>
+</div>
